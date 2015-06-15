@@ -34,10 +34,13 @@ class Matrika:
             if len(self.cifre)==2:
                 return self.cifre[0][0]*self.cifre[1][1] - self.cifre[0][1]*self.cifre[1][0]
             else:
-                nasa = self.nula_pod_prvo()
-                clen = nasa.cifre[0][0]
-                poddet = nasa.podmatrika(1,1)
-                return clen * poddet.determinanta()
+                if self.nula_pod_prvo()==False:
+                    return 0
+                else:
+                    nasa = self.nula_pod_prvo()
+                    clen = nasa.cifre[0][0]
+                    poddet = nasa.podmatrika(1,1)
+                    return clen * poddet.determinanta()
 
     def podmatrika(self,i,j):
     #i,j ta poddeterminanta (i-ta vrstica j-ti stolpec)
@@ -66,7 +69,11 @@ class Matrika:
         else:
             print("Neda se")
             return False
+
     def nula_pod_prvo(self):
+        if self.zgori_nenicelna()==False:
+            Print("Neda se")
+            return False
         nasa = self.zgori_nenicelna()
         prva = nasa.cifre[0]
         res = []
