@@ -51,16 +51,21 @@ class Matrika:
 
     def zgori_nenicelna(self):
         res = []
+        uspel = False
         if self.cifre[0][0] != 0:
             return Matrika(self.cifre)
         for i,vrstica in enumerate(self.cifre):
             if vrstica[0] != 0:
                 res.append(vrstica)
                 del(self.cifre[i])
+                uspel = True
         for j in self.cifre:
             res.append(j)
-        return Matrika(res)
-
+        if uspel:
+            return Matrika(res)
+        else:
+            print("Neda se")
+            return False
     def nula_pod_prvo(self):
         nasa = self.zgori_nenicelna()
         prva = nasa.cifre[0]
