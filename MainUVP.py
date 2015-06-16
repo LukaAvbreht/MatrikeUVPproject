@@ -28,19 +28,19 @@ class Matrika:
             return False
 
     def determinanta(self):
-        if self.ali_kvadratna()==False:
-            return False
+#        if self.ali_kvadratna()==False:
+#            return False
+#        else:
+        if len(self.cifre)==2:
+            return self.cifre[0][0]*self.cifre[1][1] - self.cifre[0][1]*self.cifre[1][0]
         else:
-            if len(self.cifre)==2:
-                return self.cifre[0][0]*self.cifre[1][1] - self.cifre[0][1]*self.cifre[1][0]
-            else:
-                if self.nula_pod_prvo()==False:
-                    return 0
-                else:
-                    nasa = self.nula_pod_prvo()
-                    clen = nasa.cifre[0][0]
-                    poddet = nasa.podmatrika(1,1)
-                    return clen * poddet.determinanta()
+#            if self.nula_pod_prvo()==False:
+#                return 0
+#            else:
+            nasa = self.nula_pod_prvo()
+            clen = nasa.cifre[0][0]
+            poddet = nasa.podmatrika(1,1)
+            return clen * poddet.determinanta()
 
     def podmatrika(self,i,j):
     #i,j ta poddeterminanta (i-ta vrstica j-ti stolpec)
@@ -54,7 +54,7 @@ class Matrika:
 
     def zgori_nenicelna(self):
         res = []
-        uspel = False
+#        uspel = False
         if self.cifre[0][0] != 0:
             return Matrika(self.cifre)
         for i,vrstica in enumerate(self.cifre):
@@ -64,16 +64,16 @@ class Matrika:
                 uspel = True
         for j in self.cifre:
             res.append(j)
-        if uspel:
-            return Matrika(res)
-        else:
-            print("Neda se")
-            return False
+#        if uspel:
+        return Matrika(res)
+#        else:
+#            print("Neda se")
+#            return 0
 
     def nula_pod_prvo(self):
-        if self.zgori_nenicelna()==False:
-            Print("Neda se")
-            return False
+#        if self.zgori_nenicelna()==0:
+#            Print("Neda se")
+#            return 0
         nasa = self.zgori_nenicelna()
         prva = nasa.cifre[0]
         res = []
@@ -130,14 +130,14 @@ class Matrika:
                 res.append(tem)
         return Matrika(res)
 
-    def inverz(self):
-        if self.denominanta()==0:
-            print("neda se")
-            return False
-        else:
-            res = []
-            a = Fraction(1,self.determinanta())
-            for
+#    def inverz(self):
+#        if self.denominanta()==0:
+#            print("neda se")
+#            return False
+#        else:
+#            res = []
+#            a = Fraction(1,self.determinanta())
+#            for
 
 
 class Tkmatrika:
