@@ -7,6 +7,7 @@ import copy
 from tkinter import *
 
 
+
 class Matrika:
     def __init__(self , cifre):
         dol = len(cifre[0])
@@ -130,29 +131,42 @@ class Matrika:
                 res.append(tem)
         return Matrika(res)
 
-#    def inverz(self):
-#        if self.denominanta()==0:
-#            print("neda se")
-#            return False
-#        else:
-#            res = []
-#            a = Fraction(1,self.determinanta())
-#            for
+    def inverz(self):
+        if self.determinanta()==0:
+            print("neda se")
+            return False
+        else:
+            res = []
+            a = Fraction(1,self.determinanta())
+            for j in range(len(self.cifre)):
+                temp = []
+                for i in range(len(self.cifre)):
+                    trenutna = self.podmatrika(i,j)
+                    det = trenutna.determinanta()
+                    temp.append(det*a)
+                res.append(temp)
+            return Matrika(res)
 
 
 class Tkmatrika:
     def __init__(self, master):
+        self.master = master
+        self.tk_master.minsize(width=350, height=500)
         self.datoteka = StringVar(master, value = None)
 
         gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
         gumb_izberi.grid(row=0,column=0)
 
-        gumb_
+
 
 
     def odpri(self):
-        filedialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
-
+        fileName = TkFileDialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
+        f = open(fileName, "r")
+        res = []
+        for line in f:
+            res.append(line)
+        aktivna = Matrika(res)
 
     """with open(fileName,"r") as vhod:    #Ta del bo iz datoteke narediu matriko s katero znamo racunat
         sez = []
