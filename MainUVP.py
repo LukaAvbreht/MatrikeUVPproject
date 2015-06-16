@@ -117,7 +117,57 @@ class Matrika:
         res.append(self.cifre[kont])
         return Matrika(res)
 
+    def transponirana(self):
+        if self.ali_kvadratna()==False:
+            print("neda se")
+            return False
+        else:
+            res = []
+            for j in  range(len(self.cifre)):
+                tem = []
+                for i in range(len(self.cifre)):
+                    tem.append(self.cifre[i][j])
+                res.append(tem)
+        return Matrika(res)
+
+    def inverz(self):
+        if self.denominanta()==0:
+            print("neda se")
+            return False
+        else:
+            res = []
+            a = Fraction(1,self.determinanta())
+            for
+
 
 class Tkmatrika:
     def __init__(self, master):
-        pass
+        self.datoteka = StringVar(master, value = None)
+
+        gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
+        gumb_izberi.grid(row=0,column=0)
+
+        gumb_
+
+
+    def odpri(self):
+        filedialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
+
+
+    """with open(fileName,"r") as vhod:    #Ta del bo iz datoteke narediu matriko s katero znamo racunat
+        sez = []
+        for line in vhod:
+            sez.append(line)
+        aktivna = Matrika(sez)"""
+
+
+
+
+
+
+
+root = Tk()
+#fileName = filedialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
+root.wm_title("Matrika")
+okno = Tkmatrika(root)
+root.mainloop()
