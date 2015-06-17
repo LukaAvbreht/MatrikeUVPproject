@@ -29,15 +29,9 @@ class Matrika:
             return False
 
     def determinanta(self):
-#        if self.ali_kvadratna()==False:
-#            return False
-#        else:
         if len(self.cifre)==2:
             return self.cifre[0][0]*self.cifre[1][1] - self.cifre[0][1]*self.cifre[1][0]
         else:
-#            if self.nula_pod_prvo()==False:
-#                return 0
-#            else:
             nasa = self.nula_pod_prvo()
             clen = nasa.cifre[0][0]
             poddet = nasa.podmatrika(1,1)
@@ -55,7 +49,6 @@ class Matrika:
 
     def zgori_nenicelna(self):
         res = []
-#        uspel = False
         if self.cifre[0][0] != 0:
             return Matrika(self.cifre)
         for i,vrstica in enumerate(self.cifre):
@@ -65,17 +58,13 @@ class Matrika:
                 uspel = True
         for j in self.cifre:
             res.append(j)
-#        if uspel:
         return Matrika(res)
-#        else:
-#            print("Neda se")
-#            return 0
+
 
     def nula_pod_prvo(self):
-#        if self.zgori_nenicelna()==0:
-#            Print("Neda se")
-#            return 0
         nasa = self.zgori_nenicelna()
+        if nasa[0][0]==0:
+            return Matrika([[0,0,0],[0,0,0],[0,0,0]])     #ker je to ubistvu sam za determinanto in ce se neda nardit zgorinenicelne je determinanta 0 == ni obrnljiva
         prva = nasa.cifre[0]
         res = []
         res.append(prva)
@@ -147,26 +136,33 @@ class Matrika:
                 res.append(temp)
             return Matrika(res)
 
+    def sled(self):
+        res = 0
+        for j in range(len(self.cifre)):
+            res += self.cifre[j][j]
+        return res
 
 class Tkmatrika:
     def __init__(self, master):
         self.master = master
         self.master.minsize(width=600, height=350)
-        self.datoteka = StringVar(master, value = None)
+       # self.datoteka = StringVar(master, value = None)
+        self.matrika = StringVar(master,value=None)
 
         gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
-        gumb_izberi.grid(row=0,column=0)
+        gumb_izberi.grid(row=0,column=0,sticky=N+S+E+W)
 
         gumb_det = Button(master, text="Determinanta", command= self.determinanta)
-        gumb_det.grid(row=1,column=0)
+        gumb_det.grid(row=1,column=0,sticky=N+S+E+W)
 
         gumb_inverz = Button(master, text="Inverz", command= self.inverz)
-        gumb_inverz.grid(row=2,column=0)
+        gumb_inverz.grid(row=2,column=0,sticky=N+S+E+W)
 
         gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
-        gumb_kvadrat.grid(row=3,column=0)
+        gumb_kvadrat.grid(row=3,column=0,sticky=N+S+E+W)
 
-
+        matrika = Entry(master)
+        matrika.grid(row= 0,column=1,rowspan=6,columnspan=3,sticky=N+S+E+W)
 
 
     def odpri(self):
@@ -176,6 +172,18 @@ class Tkmatrika:
         for line in f:
             res.append(line)
         aktivna = Matrika(res)
+
+    def izpisi(self):               #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
+        res = "Vnesli ste naslednjo matriko: \n"
+        for line in aktivna.cifre:
+            tren = ""
+            for j in line:
+                if type(j)==fractions.Fraction:
+                    tren+=str(j.numerator)+"/"+str(a.denominator)
+                else:
+                    tren+=str(j)
+            res+=tren+"\n"
+        self.matrika.set(res)
 
     def determinanta(self):
         self.determinanta = aktivna.determinanta()
