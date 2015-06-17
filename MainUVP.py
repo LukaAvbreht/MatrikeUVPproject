@@ -141,7 +141,7 @@ class Matrika:
             for j in range(len(self.cifre)):
                 temp = []
                 for i in range(len(self.cifre)):
-                    trenutna = self.podmatrika(i,j)
+                    trenutna = self.podmatrika(i+1,j+1)
                     det = trenutna.determinanta()
                     temp.append(det*a)
                 res.append(temp)
@@ -151,11 +151,20 @@ class Matrika:
 class Tkmatrika:
     def __init__(self, master):
         self.master = master
-        self.tk_master.minsize(width=350, height=500)
+        self.master.minsize(width=600, height=350)
         self.datoteka = StringVar(master, value = None)
 
         gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
         gumb_izberi.grid(row=0,column=0)
+
+        gumb_det = Button(master, text="Determinanta", command= self.determinanta)
+        gumb_det.grid(row=1,column=0)
+
+        gumb_inverz = Button(master, text="Inverz", command= self.inverz)
+        gumb_inverz.grid(row=2,column=0)
+
+        gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
+        gumb_kvadrat.grid(row=3,column=0)
 
 
 
@@ -167,6 +176,16 @@ class Tkmatrika:
         for line in f:
             res.append(line)
         aktivna = Matrika(res)
+
+    def determinanta(self):
+        self.determinanta = aktivna.determinanta()
+
+    def inverz(self):
+        self.inverz = aktivna.inverz()
+
+    def kvadrat(self):
+        self.kvadrat = aktivna.ali_kvadratna()
+        print("ni se narjen")
 
     """with open(fileName,"r") as vhod:    #Ta del bo iz datoteke narediu matriko s katero znamo racunat
         sez = []
