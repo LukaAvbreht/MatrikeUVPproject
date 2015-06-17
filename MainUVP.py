@@ -5,6 +5,7 @@ from fractions import Fraction
 import math
 import copy
 from tkinter import *
+from tkinter.filedialog import *
 
 
 
@@ -13,8 +14,10 @@ class Matrika:
         dol = len(cifre[0])
         for j in cifre:
             if len(j)!=dol:
-                return False
+                Print("nc ne bo")
+                break
         self.cifre = cifre
+
 
     def __eq__(self, other):
         if self.cifre == other.cifre:
@@ -140,14 +143,15 @@ class Matrika:
         res = 0
         for j in range(len(self.cifre)):
             res += self.cifre[j][j]
-        return res
+        return Matrika(res)
 
 class Tkmatrika:
     def __init__(self, master):
         self.master = master
         self.master.minsize(width=600, height=350)
        # self.datoteka = StringVar(master, value = None)
-        self.matrika = StringVar(master,value=None)
+        matrika = StringVar(master,value=None)
+#        matrika.grid(row=1,column=0,rowspan=5,columnspan=5)
 
         gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
         gumb_izberi.grid(row=0,column=0,sticky=N+S+E+W)
@@ -161,17 +165,18 @@ class Tkmatrika:
         gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
         gumb_kvadrat.grid(row=3,column=0,sticky=N+S+E+W)
 
-        matrika = Entry(master)
-        matrika.grid(row= 0,column=1,rowspan=6,columnspan=3,sticky=N+S+E+W)
 
 
     def odpri(self):
-        fileName = TkFileDialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
-        f = open(fileName, "r")
-        res = []
-        for line in f:
-            res.append(line)
-        aktivna = Matrika(res)
+        fileName = askopenfilename(filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
+        with open(fileName) as f:
+            res = []
+            for line in f:
+                line = line.strip("\n")
+                print(line)
+                res.append(line)
+            aktivna = Matrika(res)
+            matrika.set(aktivna)
 
     def izpisi(self):               #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
         res = "Vnesli ste naslednjo matriko: \n"
@@ -208,7 +213,7 @@ class Tkmatrika:
 
 
 root = Tk()
-#fileName = filedialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
+#fileName = tkFileDialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
 root.wm_title("Matrika")
 okno = Tkmatrika(root)
 root.mainloop()
