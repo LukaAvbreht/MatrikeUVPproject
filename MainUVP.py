@@ -65,7 +65,7 @@ class Matrika:
 
 
     def nula_pod_prvo(self):
-        nasa = self.zgori_nenicelna()
+        nasa = self.zgori_nenicelna().cifre
         if nasa[0][0]==0:
             return Matrika([[0,0,0],[0,0,0],[0,0,0]])     #ker je to ubistvu sam za determinanto in ce se neda nardit zgorinenicelne je determinanta 0 == ni obrnljiva
         prva = nasa.cifre[0]
@@ -143,7 +143,7 @@ class Matrika:
         res = 0
         for j in range(len(self.cifre)):
             res += self.cifre[j][j]
-        return Matrika(res)
+        return res
 
 class Tkmatrika:
     def __init__(self, master):
@@ -157,18 +157,29 @@ class Tkmatrika:
         gumb_izberi.grid(row=0,column=0,sticky=N+S+E+W)
 
         gumb_det = Button(master, text="Determinanta", command= self.determinanta)
-        gumb_det.grid(row=1,column=0,sticky=N+S+E+W)
+        gumb_det.grid(row=3,column=0,sticky=N+S+E+W)
+
+        gumb_sled = Button(master, text="Sled", command= self.sled)
+        gumb_sled.grid(row=4,column=0,sticky=N+S+E+W)
 
         gumb_inverz = Button(master, text="Inverz", command= self.inverz)
-        gumb_inverz.grid(row=2,column=0,sticky=N+S+E+W)
+        gumb_inverz.grid(row=6,column=0,sticky=N+S+E+W)
 
-        gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
-        gumb_kvadrat.grid(row=3,column=0,sticky=N+S+E+W)
+    #    gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
+    #    gumb_kvadrat.grid(row=7,column=0,sticky=N+S+E+W)
 
+        gumb_trans = Button(master, text="Transponirano", command= self.trans)
+        gumb_trans.grid(row=5,column=0,sticky=N+S+E+W)
 
+        text_imedat = Label(master,textvariable= self.fileName)
+        text_imedat.grid(row=2,column=0,sticky=N+S+E+W)
+
+        text_imedat = Label(master,text = "Ime datoteke:")
+        text_imedat.grid(row=1,column=0,sticky=N+S+E+W)
 
     def odpri(self):
         fileName = askopenfilename(filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
+        ime = str(fileName)
         with open(fileName) as f:
             res = []
             for line in f:
@@ -176,7 +187,10 @@ class Tkmatrika:
                 print(line)
                 res.append(line)
             aktivna = Matrika(res)
-            matrika.set(aktivna)
+           # matrika.set(aktivna)
+
+    def fileName(self):
+        text_imedet.set(ime)
 
     def izpisi(self):               #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
         res = "Vnesli ste naslednjo matriko: \n"
@@ -188,7 +202,7 @@ class Tkmatrika:
                 else:
                     tren+=str(j)
             res+=tren+"\n"
-        self.matrika.set(res)
+        matrika.set(res)
 
     def determinanta(self):
         self.determinanta = aktivna.determinanta()
@@ -198,6 +212,12 @@ class Tkmatrika:
 
     def kvadrat(self):
         self.kvadrat = aktivna.ali_kvadratna()
+        print("ni se narjen")
+
+    def trans(self):
+        print("ni se narjen")
+
+    def sled(self):
         print("ni se narjen")
 
     """with open(fileName,"r") as vhod:    #Ta del bo iz datoteke narediu matriko s katero znamo racunat
