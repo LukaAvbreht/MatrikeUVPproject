@@ -6,7 +6,7 @@ import math
 import copy
 from tkinter import *
 from tkinter.filedialog import *
-
+import os
 
 
 class Matrika:
@@ -62,7 +62,6 @@ class Matrika:
         for j in self.cifre:
             res.append(j)
         return Matrika(res)
-
 
     def nula_pod_prvo(self):
         nasa = self.zgori_nenicelna().cifre
@@ -149,29 +148,33 @@ class Tkmatrika:
     def __init__(self, master):
         self.master = master
         self.master.minsize(width=600, height=350)
-       # self.datoteka = StringVar(master, value = None)
-        matrika = StringVar(master,value=None)
+        self.imedat = StringVar(master, value=None)
+        self.aktivnamat = StringVar(master,value=None)
+        self.izracun = StringVar(master,value=None)
 #        matrika.grid(row=1,column=0,rowspan=5,columnspan=5)
 
         gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
         gumb_izberi.grid(row=0,column=0,sticky=N+S+E+W)
 
         gumb_det = Button(master, text="Determinanta", command= self.determinanta)
-        gumb_det.grid(row=3,column=0,sticky=N+S+E+W)
+        gumb_det.grid(row=4,column=0,sticky=N+S+E+W)
 
         gumb_sled = Button(master, text="Sled", command= self.sled)
-        gumb_sled.grid(row=4,column=0,sticky=N+S+E+W)
+        gumb_sled.grid(row=5,column=0,sticky=N+S+E+W)
 
         gumb_inverz = Button(master, text="Inverz", command= self.inverz)
-        gumb_inverz.grid(row=6,column=0,sticky=N+S+E+W)
+        gumb_inverz.grid(row=7,column=0,sticky=N+S+E+W)
 
     #    gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
     #    gumb_kvadrat.grid(row=7,column=0,sticky=N+S+E+W)
 
         gumb_trans = Button(master, text="Transponirano", command= self.trans)
-        gumb_trans.grid(row=5,column=0,sticky=N+S+E+W)
+        gumb_trans.grid(row=6,column=0,sticky=N+S+E+W)
 
-        text_imedat = Label(master,textvariable= self.fileName)
+        gumb_izpisi = Button(master, text="Ispisi", command= self.izpisi)
+        gumb_izpisi.grid(row=3,column=0,sticky=N+S+E+W)
+
+        text_imedat = Label(master,textvariable= self.imedat)
         text_imedat.grid(row=2,column=0,sticky=N+S+E+W)
 
         text_imedat = Label(master,text = "Ime datoteke:")
@@ -179,7 +182,12 @@ class Tkmatrika:
 
     def odpri(self):
         fileName = askopenfilename(filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
-        ime = str(fileName)
+        ind = 0
+        for i,j in enumerate(str(fileName)):
+            if j=="/":
+                ind = i
+        datoteka = str(fileName)[ind+1:]
+        self.imedat.set(datoteka)
         with open(fileName) as f:
             res = []
             for line in f:
