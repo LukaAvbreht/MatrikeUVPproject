@@ -125,9 +125,10 @@ class Tkmatrika:
         self.detispis = StringVar(master,value=None)
         self.sledispis = StringVar(master,value=None)
         self.errorfild = StringVar(master,value=None)
-        self.aktivna = Matrika([[1,2],[3,4]])
+        self.aktivna = None
 #        matrika.grid(row=1,column=0,rowspan=5,columnspan=5)
 
+        self.DEFCON  = 0 #ce je ze datoteka
         self.DEFCON1 = 0 #stanje ce je ze ispisana matrika
         self.DEFCON2 = 0 #stanje za inverz
         self.DEFCON3 = 0 #stanje za determinanto
@@ -199,108 +200,124 @@ class Tkmatrika:
             line = line.split(",")
             for i in line:
                 tre.append(int(i))
-            print(line)                 #treba zbrisat
             res.append(tre)
-        print(res)
         self.aktivna = Matrika(res)
-        if self.aktivna.ali_kvadratna()==Fasle:
+        if self.aktivna.ali_kvadratna()==False:
             self.errorfild.set("Vnesena matrika ni kvadratna \nIzberite drugo datoteko")
+            self.DEFCON = 0
+        else:
+            self.DEFCON = 1
 
 
 
     def izpisi(self): #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
-        if self.DEFCON1 == 0:
-            res = "Vnesli ste naslednjo matriko: \n"
-            for line in self.aktivna.cifre:
-                tren = ""
-                for j in line:
-                    try:
-                        if j.denominator==1:
-                            tren+=str(j.numerator)+"   "
-                        else:
-                            tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
-                    except:
-                        tren+=str(j)+"   "
-                res+=tren+"\n"
-            self.vhodmatrika.set(res)
-            self.DEFCON1 = 1
+        if self.DEFCON == 0:
+            self.vhodmatrika.set("Najprej izberi datoteko")
         else:
-            self.vhodmatrika.set("")
-            self.DEFCON1 = 0
+            if self.DEFCON1 == 0:
+                res = "Vnesli ste naslednjo matriko: \n"
+                for line in self.aktivna.cifre:
+                    tren = ""
+                    for j in line:
+                        try:
+                            if j.denominator==1:
+                                tren+=str(j.numerator)+"   "
+                            else:
+                                tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                        except:
+                            tren+=str(j)+"   "
+                    res+=tren+"\n"
+                self.vhodmatrika.set(res)
+                self.DEFCON1 = 1
+            else:
+                self.vhodmatrika.set("")
+                self.DEFCON1 = 0
 
     def determinanta(self):
-        if self.DEFCON3 == 0:
-            det = self.aktivna.determinanta()
-            try:
-                if det.denominator==1:
-                    res = str(det.numerator)
-                else:
-                    res = str(det.numerator)+"/"+str(det.denominator)
-            except:
-                res = str(round(det,4))
-            self.detispis.set(res)
-            self.DEFCON3=1
-        else:
+        if self.DEFCON == 0:
             self.detispis.set("")
-            self.DEFCON3=0
+        else:
+            if self.DEFCON3 == 0:
+                det = self.aktivna.determinanta()
+                try:
+                    if det.denominator==1:
+                        res = str(det.numerator)
+                    else:
+                        res = str(det.numerator)+"/"+str(det.denominator)
+                except:
+                    res = str(round(det,4))
+                self.detispis.set(res)
+                self.DEFCON3=1
+            else:
+                self.detispis.set("")
+                self.DEFCON3=0
 
     def inverz(self):
-        if self.DEFCON2 != 1:
-            inverz = self.aktivna.inverz()
-            res = "Inverz matrike je naslednja matrika: \n"
-            for line in inverz.cifre:
-                tren = ""
-                for j in line:
-                    try:
-                        if j.denominator==1:
-                            tren+=str(j.numerator)+"   "
-                        else:
-                            tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
-                    except:
-                        tren+=str(j)+"   "
-                res+=tren+"\n"
-            self.izhodmatrika.set(res)
-            self.DEFCON2=1
-        elif self.DEFCON2 == 1:
-            self.izhodmatrika.set("")
-            self.DEFCON2 = 0
+        if self.DEFCON == 0:
+            self.izhodmatrika.set("Najprej izberi datoteko")
+        else:
+            if self.DEFCON2 != 1:
+                inverz = self.aktivna.inverz()
+                res = "Inverz matrike je naslednja matrika: \n"
+                for line in inverz.cifre:
+                    tren = ""
+                    for j in line:
+                        try:
+                            if j.denominator==1:
+                                tren+=str(j.numerator)+"   "
+                            else:
+                                tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                        except:
+                            tren+=str(j)+"   "
+                    res+=tren+"\n"
+                self.izhodmatrika.set(res)
+                self.DEFCON2=1
+            elif self.DEFCON2 == 1:
+                self.izhodmatrika.set("")
+                self.DEFCON2 = 0
 
     def trans(self):
-        if self.DEFCON2 != 2:
-            trans = self.aktivna.transponirana()
-            res = "Naslednja matrika transponirano: \n"
-            for line in trans.cifre:
-                tren = ""
-                for j in line:
-                    try:
-                        if j.denominator==1:
-                            tren+=str(j.numerator)+"   "
-                        else:
-                            tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
-                    except:
-                        tren+=str(j)+"   "
-                res+=tren+"\n"
-            self.izhodmatrika.set(res)
-            self.DEFCON2=2
-        elif self.DEFCON2 == 2:
-            self.izhodmatrika.set("")
-            self.DEFCON2 = 0
+        if self.DEFCON == 0:
+            self.izhodmatrika.set("Najprej izberi datoteko")
+        else:
+            if self.DEFCON2 != 2:
+                trans = self.aktivna.transponirana()
+                res = "Naslednja matrika transponirano: \n"
+                for line in trans.cifre:
+                    tren = ""
+                    for j in line:
+                        try:
+                            if j.denominator==1:
+                                tren+=str(j.numerator)+"   "
+                            else:
+                                tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                        except:
+                            tren+=str(j)+"   "
+                    res+=tren+"\n"
+                self.izhodmatrika.set(res)
+                self.DEFCON2=2
+            elif self.DEFCON2 == 2:
+                self.izhodmatrika.set("")
+                self.DEFCON2 = 0
 
     def sled(self):
-        if self.DEFCON4 == 0:
-            sled = self.aktivna.sled()
-            try:
-                if sled.denominator==1:
-                    res = str(sled.numerator)
-                else:
-                    res = str(sled.numerator)+"/"+str(sled.denominator)
-            except:
-                res = str(round(sled,4))
-            self.sledispis.set(res)
-            self.DEFCON4 = 1
-        else:
-            self.DEFCON4 = 0
+        if self.DEFCON == 0:
             self.sledispis.set("")
+        else:
+            if self.DEFCON4 == 0:
+                sled = self.aktivna.sled()
+                try:
+                    if sled.denominator==1:
+                        res = str(sled.numerator)
+                    else:
+                        res = str(sled.numerator)+"/"+str(sled.denominator)
+                except:
+                    res = str(round(sled,4))
+                self.sledispis.set(res)
+                self.DEFCON4 = 1
+            else:
+                self.DEFCON4 = 0
+                self.sledispis.set("")
 
 
 
