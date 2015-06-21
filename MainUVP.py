@@ -124,8 +124,14 @@ class Tkmatrika:
         self.izhodmatrika = StringVar(master,value=None)
         self.detispis = StringVar(master,value=None)
         self.sledispis = StringVar(master,value=None)
+        self.errorfild = StringVar(master,value=None)
         self.aktivna = Matrika([[1,2],[3,4]])
 #        matrika.grid(row=1,column=0,rowspan=5,columnspan=5)
+
+        self.DEFCON1 = 0 #stanje ce je ze ispisana matrika
+        self.DEFCON2 = 0 #stanje za inverz
+        self.DEFCON3 = 0 #stanje za determinanto
+        self.DEFCON4 = 0 #stanje za sled
 
         gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri,height=2)
         gumb_izberi.grid(row=0,column=0,sticky=N+S+E+W)
@@ -172,6 +178,9 @@ class Tkmatrika:
         text_sled = Label(master,textvariable= self.sledispis,height=2)
         text_sled.grid(row=6,column=1,sticky=N+S+E+W)
 
+        text_sled = Label(master,textvariable= self.errorfild,height=2)
+        text_sled.grid(row=0,column=1,rowspan=2,sticky=N+S+E+W)
+
     def odpri(self):
         fileName = askopenfilename(filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
         ind = 0
@@ -194,67 +203,104 @@ class Tkmatrika:
             res.append(tre)
         print(res)
         self.aktivna = Matrika(res)
+        if self.aktivna.ali_kvadratna()==Fasle:
+            self.errorfild.set("Vnesena matrika ni kvadratna \nIzberite drugo datoteko")
 
 
-    def izpisi(self):               #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
-        res = "Vnesli ste naslednjo matriko: \n"
-        for line in self.aktivna.cifre:
-            tren = ""
-            for j in line:
-                try:
-                    if j.denominator==1:
-                        tren+=str(j.numerator)+"   "
-                    else:
-                        tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
-                except:
-                    tren+=str(j)+"   "
-            res+=tren+"\n"
-        self.vhodmatrika.set(res)
+
+    def izpisi(self): #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
+        if self.DEFCON1 == 0:
+            res = "Vnesli ste naslednjo matriko: \n"
+            for line in self.aktivna.cifre:
+                tren = ""
+                for j in line:
+                    try:
+                        if j.denominator==1:
+                            tren+=str(j.numerator)+"   "
+                        else:
+                            tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                    except:
+                        tren+=str(j)+"   "
+                res+=tren+"\n"
+            self.vhodmatrika.set(res)
+            self.DEFCON1 = 1
+        else:
+            self.vhodmatrika.set("")
+            self.DEFCON1 = 0
 
     def determinanta(self):
-        det = self.aktivna.determinanta()
-        try:
-            if det.denominator==1:
-                res = str(det.numerator)
-            else:
-                res = str(det.numerator)+"/"+str(det.denominator)
-        except:
-            res = str(round(det,4))
-        self.detispis.set(res)
+        if self.DEFCON3 == 0:
+            det = self.aktivna.determinanta()
+            try:
+                if det.denominator==1:
+                    res = str(det.numerator)
+                else:
+                    res = str(det.numerator)+"/"+str(det.denominator)
+            except:
+                res = str(round(det,4))
+            self.detispis.set(res)
+            self.DEFCON3=1
+        else:
+            self.detispis.set("")
+            self.DEFCON3=0
 
     def inverz(self):
-        inverz = self.aktivna.inverz()
-        res = "Inverz matrike je naslednja matrika: \n"
-        for line in inverz.cifre:
-            tren = ""
-            for j in line:
-                try:
-                    if j.denominator==1:
-                        tren+=str(j.numerator)+"   "
-                    else:
-                        tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
-                except:
-                    tren+=str(j)+"   "
-            res+=tren+"\n"
-        self.izhodmatrika.set(res)
-
-    def kvadrat(self):
-        self.kvadrat = aktivna.ali_kvadratna()
-        print("ni se narjen")
+        if self.DEFCON2 != 1:
+            inverz = self.aktivna.inverz()
+            res = "Inverz matrike je naslednja matrika: \n"
+            for line in inverz.cifre:
+                tren = ""
+                for j in line:
+                    try:
+                        if j.denominator==1:
+                            tren+=str(j.numerator)+"   "
+                        else:
+                            tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                    except:
+                        tren+=str(j)+"   "
+                res+=tren+"\n"
+            self.izhodmatrika.set(res)
+            self.DEFCON2=1
+        elif self.DEFCON2 == 1:
+            self.izhodmatrika.set("")
+            self.DEFCON2 = 0
 
     def trans(self):
-        print("ni se narjen")
+        if self.DEFCON2 != 2:
+            trans = self.aktivna.transponirana()
+            res = "Naslednja matrika transponirano: \n"
+            for line in trans.cifre:
+                tren = ""
+                for j in line:
+                    try:
+                        if j.denominator==1:
+                            tren+=str(j.numerator)+"   "
+                        else:
+                            tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                    except:
+                        tren+=str(j)+"   "
+                res+=tren+"\n"
+            self.izhodmatrika.set(res)
+            self.DEFCON2=2
+        elif self.DEFCON2 == 2:
+            self.izhodmatrika.set("")
+            self.DEFCON2 = 0
 
     def sled(self):
-        sled = self.aktivna.sled()
-        try:
-            if sled.denominator==1:
-                res = str(sled.numerator)
-            else:
-                res = str(sled.numerator)+"/"+str(sled.denominator)
-        except:
-            res = str(round(sled,4))
-        self.sledispis.set(res)
+        if self.DEFCON4 == 0:
+            sled = self.aktivna.sled()
+            try:
+                if sled.denominator==1:
+                    res = str(sled.numerator)
+                else:
+                    res = str(sled.numerator)+"/"+str(sled.denominator)
+            except:
+                res = str(round(sled,4))
+            self.sledispis.set(res)
+            self.DEFCON4 = 1
+        else:
+            self.DEFCON4 = 0
+            self.sledispis.set("")
 
 
 
