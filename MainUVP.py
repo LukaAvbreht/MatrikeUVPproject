@@ -64,49 +64,20 @@ class Matrika:
         return Matrika(res)
 
     def nula_pod_prvo(self):
-        nasa = self.zgori_nenicelna().cifre
-        if nasa[0][0]==0:
-            return Matrika([[0,0,0],[0,0,0],[0,0,0]])     #ker je to ubistvu sam za determinanto in ce se neda nardit zgorinenicelne je determinanta 0 == ni obrnljiva
+        nasa = self.zgori_nenicelna()
+#     if nasa[0][0]==0:
+#            return Matrika([[0,0,0],[0,0,0],[0,0,0]])     #ker je to ubistvu sam za determinanto in ce se neda nardit zgorinenicelne je determinanta 0 == ni obrnljiva
         prva = nasa.cifre[0]
         res = []
         res.append(prva)
         for vrstica in nasa.cifre[1:]:
             resvrs = []
             for vodilni,clen in zip(prva,vrstica):
+                print(vrstica[0],prva[0])                   # treba zbrisat
                 k = -Fraction(vrstica[0],prva[0])
                 clen = k*vodilni + clen
                 resvrs.append(clen)        #morm dat v floor d mam pol lep fraction
             res.append(resvrs)
-        return Matrika(res)
-
-    def nenicelna(self,i,j):            # to ne dela nc pametnega se
-        if i>len(self.cifre):
-            return False
-        if j>len(self.cifre[0]):
-            return False
-        res = []
-        kont = -1
-        i = i-1
-        j = j-1
-        res = []
-        if self.cifre[i][j] != 0:
-            return Matrika(self.cifre)
-        for ind,line in enumerate(self.cifre):
-            if ind<i:
-                res.append(line)
-            else:
-                break
-        for ind,line in enumerate(self.cifre[i:]):
-            if line[j]!=0:
-                res.append(line)
-                kont = ind
-        if kont==-1:
-            print("neda se")
-            return False
-        for ind,line in enumerate(self.cifre[:i]):
-            if ind!=kont:
-                res.append(line)
-        res.append(self.cifre[kont])
         return Matrika(res)
 
     def transponirana(self):
@@ -149,36 +120,57 @@ class Tkmatrika:
         self.master = master
         self.master.minsize(width=600, height=350)
         self.imedat = StringVar(master, value=None)
-        self.aktivnamat = StringVar(master,value=None)
-        self.izracun = StringVar(master,value=None)
+        self.vhodmatrika = StringVar(master,value=None)
+        self.izhodmatrika = StringVar(master,value=None)
+        self.detispis = StringVar(master,value=None)
+        self.sledispis = StringVar(master,value=None)
+        self.aktivna = Matrika([[1,2],[3,4]])
 #        matrika.grid(row=1,column=0,rowspan=5,columnspan=5)
 
-        gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri)
+        gumb_izberi = Button(master, text="Izberi datoteko", command= self.odpri,height=2)
         gumb_izberi.grid(row=0,column=0,sticky=N+S+E+W)
 
-        gumb_det = Button(master, text="Determinanta", command= self.determinanta)
+        gumb_det = Button(master, text="Determinanta", command= self.determinanta,height=2)
         gumb_det.grid(row=4,column=0,sticky=N+S+E+W)
 
-        gumb_sled = Button(master, text="Sled", command= self.sled)
+        gumb_sled = Button(master, text="Sled", command= self.sled,height=2)
         gumb_sled.grid(row=5,column=0,sticky=N+S+E+W)
 
-        gumb_inverz = Button(master, text="Inverz", command= self.inverz)
+        gumb_inverz = Button(master, text="Inverz", command= self.inverz,height=2)
         gumb_inverz.grid(row=7,column=0,sticky=N+S+E+W)
 
     #    gumb_kvadrat = Button(master, text="Kvadratna", command= self.kvadrat)
     #    gumb_kvadrat.grid(row=7,column=0,sticky=N+S+E+W)
 
-        gumb_trans = Button(master, text="Transponirano", command= self.trans)
+        gumb_trans = Button(master, text="Transponirano", command= self.trans,height=2)
         gumb_trans.grid(row=6,column=0,sticky=N+S+E+W)
 
-        gumb_izpisi = Button(master, text="Ispisi", command= self.izpisi)
+        gumb_izpisi = Button(master, text="Ispisi", command= self.izpisi,height=2)
         gumb_izpisi.grid(row=3,column=0,sticky=N+S+E+W)
 
-        text_imedat = Label(master,textvariable= self.imedat)
+        text_imedat = Label(master,textvariable= self.imedat,height=2)
         text_imedat.grid(row=2,column=0,sticky=N+S+E+W)
 
-        text_imedat = Label(master,text = "Ime datoteke:")
+        text_imedat = Label(master,text = "Ime datoteke:",height=2)
         text_imedat.grid(row=1,column=0,sticky=N+S+E+W)
+
+        text_vhodmatrika = Label(master,textvariable= self.vhodmatrika,height=2)
+        text_vhodmatrika.grid(row=0,column=2,columnspan=4,rowspan=4,sticky=N+S+E+W)
+
+        text_izhodmatrika = Label(master,textvariable= self.izhodmatrika,height=2)
+        text_izhodmatrika.grid(row=4,column=2,columnspan=4,rowspan=4,sticky=N+S+E+W)
+
+        text_naddet = Label(master,text = "Determinanta:",height=2)
+        text_naddet.grid(row=3,column=1,sticky=N+S+E+W)
+
+        text_det = Label(master,textvariable= self.detispis,height=2)
+        text_det.grid(row=4,column=1,sticky=N+S+E+W)
+
+        text_nadsled = Label(master,text = "Sled:",height=2)
+        text_nadsled.grid(row=5,column=1,sticky=N+S+E+W)
+
+        text_sled = Label(master,textvariable= self.sledispis,height=2)
+        text_sled.grid(row=6,column=1,sticky=N+S+E+W)
 
     def odpri(self):
         fileName = askopenfilename(filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
@@ -188,35 +180,63 @@ class Tkmatrika:
                 ind = i
         datoteka = str(fileName)[ind+1:]
         self.imedat.set(datoteka)
-        with open(fileName) as f:
-            res = []
-            for line in f:
-                line = line.strip("\n")
-                print(line)
-                res.append(line)
-            aktivna = Matrika(res)
-           # matrika.set(aktivna)
+        file = open(fileName, "r")
+        res = []
+        for line in file:
+            tre = []
+            line = line.strip("\n")
+            line = line.strip("[")
+            line = line.strip("]")
+            line = line.split(",")
+            for i in line:
+                tre.append(int(i))
+            print(line)                 #treba zbrisat
+            res.append(tre)
+        print(res)
+        self.aktivna = Matrika(res)
 
-    def fileName(self):
-        text_imedet.set(ime)
 
     def izpisi(self):               #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
         res = "Vnesli ste naslednjo matriko: \n"
-        for line in aktivna.cifre:
+        for line in self.aktivna.cifre:
             tren = ""
             for j in line:
-                if type(j)==fractions.Fraction:
-                    tren+=str(j.numerator)+"/"+str(a.denominator)
-                else:
-                    tren+=str(j)
+                try:
+                    if j.denominator==1:
+                        tren+=str(j.numerator)+"   "
+                    else:
+                        tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                except:
+                    tren+=str(j)+"   "
             res+=tren+"\n"
-        matrika.set(res)
+        self.vhodmatrika.set(res)
 
     def determinanta(self):
-        self.determinanta = aktivna.determinanta()
+        det = self.aktivna.determinanta()
+        try:
+            if det.denominator==1:
+                res = str(det.numerator)
+            else:
+                res = str(det.numerator)+"/"+str(det.denominator)
+        except:
+            res = str(round(det,4))
+        self.detispis.set(res)
 
     def inverz(self):
-        self.inverz = aktivna.inverz()
+        inverz = self.aktivna.inverz()
+        res = "Inverz matrike je naslednja matrika: \n"
+        for line in inverz.cifre:
+            tren = ""
+            for j in line:
+                try:
+                    if j.denominator==1:
+                        tren+=str(j.numerator)+"   "
+                    else:
+                        tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                except:
+                    tren+=str(j)+"   "
+            res+=tren+"\n"
+        self.izhodmatrika.set(res)
 
     def kvadrat(self):
         self.kvadrat = aktivna.ali_kvadratna()
@@ -226,22 +246,19 @@ class Tkmatrika:
         print("ni se narjen")
 
     def sled(self):
-        print("ni se narjen")
-
-    """with open(fileName,"r") as vhod:    #Ta del bo iz datoteke narediu matriko s katero znamo racunat
-        sez = []
-        for line in vhod:
-            sez.append(line)
-        aktivna = Matrika(sez)"""
-
-
-
-
+        sled = self.aktivna.sled()
+        try:
+            if sled.denominator==1:
+                res = str(sled.numerator)
+            else:
+                res = str(sled.numerator)+"/"+str(sled.denominator)
+        except:
+            res = str(round(sled,4))
+        self.sledispis.set(res)
 
 
 
 root = Tk()
-#fileName = tkFileDialog.askopenfilename( filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
 root.wm_title("Matrika")
 okno = Tkmatrika(root)
 root.mainloop()
