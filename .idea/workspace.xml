@@ -17,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/UVPGITproject$MainUVP.coverage" NAME="MainUVP Coverage Results" MODIFIED="1434924844906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UVPGITproject$MainUVP.coverage" NAME="MainUVP Coverage Results" MODIFIED="1434925555439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,16 +31,15 @@
       <file leaf-file-name="MainUVP.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainUVP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7133221">
-              <caret line="215" column="13" selection-start-line="215" selection-start-column="13" selection-end-line="215" selection-end-column="13" />
+            <state vertical-scroll-proportion="-0.27283952">
+              <caret line="161" column="80" selection-start-line="161" selection-start-column="80" selection-end-line="161" selection-end-column="80" />
               <folding>
                 <element signature="e#22#52#0" expanded="true" />
                 <element signature="e#199#353#0" expanded="false" />
-                <element signature="e#393#485#0" expanded="false" />
-                <element signature="e#524#627#0" expanded="false" />
-                <element signature="e#992#1295#0" expanded="false" />
-                <element signature="e#1336#1680#0" expanded="false" />
-                <element signature="e#2854#3347#0" expanded="false" />
+                <element signature="e#392#484#0" expanded="false" />
+                <element signature="e#523#626#0" expanded="false" />
+                <element signature="e#991#1294#0" expanded="false" />
+                <element signature="e#2777#3270#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -83,10 +82,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="595" />
-    <option name="y" value="246" />
-    <option name="width" value="1678" />
-    <option name="height" value="1056" />
+    <option name="x" value="1078" />
+    <option name="y" value="60" />
+    <option name="width" value="1456" />
+    <option name="height" value="1273" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -440,11 +439,17 @@
       <option name="project" value="LOCAL" />
       <updated>1434924162087</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;">
+      <created>1434924898266</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1434924898266</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="595" y="246" width="1678" height="1056" extended-state="0" />
+    <frame x="1078" y="60" width="1456" height="1273" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -453,9 +458,9 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46536797" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32792208" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26555654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15883808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18409742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -493,11 +498,12 @@
     <MESSAGE value="dadanih par gumbov&#10;" />
     <MESSAGE value="str variabli so dodani&#10;" />
     <MESSAGE value="Narjena stanja&#10;manjka samo se oblika" />
-    <option name="LAST_COMMIT_MESSAGE" value="Narjena stanja&#10;manjka samo se oblika" />
+    <MESSAGE value="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -522,16 +528,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainUVP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7133221">
-          <caret line="215" column="13" selection-start-line="215" selection-start-column="13" selection-end-line="215" selection-end-column="13" />
+        <state vertical-scroll-proportion="-0.27283952">
+          <caret line="161" column="80" selection-start-line="161" selection-start-column="80" selection-end-line="161" selection-end-column="80" />
           <folding>
             <element signature="e#22#52#0" expanded="true" />
             <element signature="e#199#353#0" expanded="false" />
-            <element signature="e#393#485#0" expanded="false" />
-            <element signature="e#524#627#0" expanded="false" />
-            <element signature="e#992#1295#0" expanded="false" />
-            <element signature="e#1336#1680#0" expanded="false" />
-            <element signature="e#2854#3347#0" expanded="false" />
+            <element signature="e#392#484#0" expanded="false" />
+            <element signature="e#523#626#0" expanded="false" />
+            <element signature="e#991#1294#0" expanded="false" />
+            <element signature="e#2777#3270#0" expanded="false" />
           </folding>
         </state>
       </provider>

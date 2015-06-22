@@ -18,7 +18,6 @@ class Matrika:
                 break
         self.cifre = cifre
 
-
     def __eq__(self, other):
         if self.cifre == other.cifre:
             return True
@@ -73,7 +72,6 @@ class Matrika:
         for vrstica in nasa.cifre[1:]:
             resvrs = []
             for vodilni,clen in zip(prva,vrstica):
-                print(vrstica[0],prva[0])                   # treba zbrisat
                 k = -Fraction(vrstica[0],prva[0])
                 clen = k*vodilni + clen
                 resvrs.append(clen)        #morm dat v floor d mam pol lep fraction
@@ -118,7 +116,7 @@ class Matrika:
 class Tkmatrika:
     def __init__(self, master):
         self.master = master
-        self.master.minsize(width=600, height=350)
+        self.master.minsize(width=600, height=318)
         self.imedat = StringVar(master, value=None)
         self.vhodmatrika = StringVar(master,value=None)
         self.izhodmatrika = StringVar(master,value=None)
@@ -207,7 +205,14 @@ class Tkmatrika:
             self.DEFCON = 0
         else:
             self.DEFCON = 1
-
+            self.vhodmatrika.set("")
+            self.izhodmatrika.set("")
+            self.sledispis.set("")
+            self.detispis.set("")
+            self.DEFCON1 = 0
+            self.DEFCON2 = 0
+            self.DEFCON3 = 0
+            self.DEFCON4 = 0
 
 
     def izpisi(self): #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko
@@ -257,21 +262,24 @@ class Tkmatrika:
             self.izhodmatrika.set("Najprej izberi datoteko")
         else:
             if self.DEFCON2 != 1:
-                inverz = self.aktivna.inverz()
-                res = "Inverz matrike je naslednja matrika: \n"
-                for line in inverz.cifre:
-                    tren = ""
-                    for j in line:
-                        try:
-                            if j.denominator==1:
-                                tren+=str(j.numerator)+"   "
-                            else:
-                                tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
-                        except:
-                            tren+=str(j)+"   "
-                    res+=tren+"\n"
-                self.izhodmatrika.set(res)
-                self.DEFCON2=1
+                if self.aktivna.determinanta()==0:
+                    self.izhodmatrika.set("Matrika ni obrnljiva")
+                else:
+                    inverz = self.aktivna.inverz()
+                    res = "Inverz matrike je naslednja matrika: \n"
+                    for line in inverz.cifre:
+                        tren = ""
+                        for j in line:
+                            try:
+                                if j.denominator==1:
+                                    tren+=str(j.numerator)+"   "
+                                else:
+                                    tren+=str(j.numerator)+"/"+str(j.denominator)+"   "
+                            except:
+                                tren+=str(j)+"   "
+                        res+=tren+"\n"
+                    self.izhodmatrika.set(res)
+                    self.DEFCON2=1
             elif self.DEFCON2 == 1:
                 self.izhodmatrika.set("")
                 self.DEFCON2 = 0
@@ -318,8 +326,6 @@ class Tkmatrika:
             else:
                 self.DEFCON4 = 0
                 self.sledispis.set("")
-
-
 
 root = Tk()
 root.wm_title("Matrika")
