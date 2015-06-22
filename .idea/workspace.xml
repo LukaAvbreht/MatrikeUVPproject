@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a4bff1a-7da3-44d9-8361-3e59e0d354ee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainUVP.py" afterPath="$PROJECT_DIR$/MainUVP.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UVPGITproject.iws" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="MainUVP.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainUVP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.27283952">
-              <caret line="161" column="80" selection-start-line="161" selection-start-column="80" selection-end-line="161" selection-end-column="80" />
+            <state vertical-scroll-proportion="2.05679">
+              <caret line="203" column="88" selection-start-line="203" selection-start-column="88" selection-end-line="203" selection-end-column="88" />
               <folding>
                 <element signature="e#22#52#0" expanded="true" />
                 <element signature="e#199#353#0" expanded="false" />
@@ -445,12 +444,18 @@
       <option name="project" value="LOCAL" />
       <updated>1434924898266</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Dodano se stanje k se zresetira ko odpres novo matriko&#10;">
+      <created>1434965757995</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1434965757995</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1078" y="60" width="1456" height="1273" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -460,7 +465,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46536797" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26555654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18409742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18409742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -499,7 +504,8 @@
     <MESSAGE value="str variabli so dodani&#10;" />
     <MESSAGE value="Narjena stanja&#10;manjka samo se oblika" />
     <MESSAGE value="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;" />
+    <MESSAGE value="Dodano se stanje k se zresetira ko odpres novo matriko&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodano se stanje k se zresetira ko odpres novo matriko&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -528,8 +534,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainUVP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.27283952">
-          <caret line="161" column="80" selection-start-line="161" selection-start-column="80" selection-end-line="161" selection-end-column="80" />
+        <state vertical-scroll-proportion="2.05679">
+          <caret line="203" column="88" selection-start-line="203" selection-start-column="88" selection-end-line="203" selection-end-column="88" />
           <folding>
             <element signature="e#22#52#0" expanded="true" />
             <element signature="e#199#353#0" expanded="false" />
