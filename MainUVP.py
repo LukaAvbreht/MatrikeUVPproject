@@ -64,8 +64,8 @@ class Matrika:
 
     def nula_pod_prvo(self):
         nasa = self.zgori_nenicelna()
-#     if nasa[0][0]==0:
-#            return Matrika([[0,0,0],[0,0,0],[0,0,0]])     #ker je to ubistvu sam za determinanto in ce se neda nardit zgorinenicelne je determinanta 0 == ni obrnljiva
+        if nasa.cifre[0][0]==0:
+            return Matrika([[0,0,0],[0,0,0],[0,0,0]])     #ker je to ubistvu sam za determinanto in ce se neda nardit zgorinenicelne je determinanta 0 == ni obrnljiva
         prva = nasa.cifre[0]
         res = []
         res.append(prva)
@@ -160,10 +160,10 @@ class Tkmatrika:
         text_imedat.grid(row=1,column=0,sticky=N+S+E+W)
 
         text_vhodmatrika = Label(master,textvariable= self.vhodmatrika,height=2)
-        text_vhodmatrika.grid(row=0,column=2,columnspan=4,rowspan=4,sticky=N+S+E+W)
+        text_vhodmatrika.grid(row=0,column=2,columnspan=4,rowspan=7,sticky=N+S+E+W)
 
         text_izhodmatrika = Label(master,textvariable= self.izhodmatrika,height=2)
-        text_izhodmatrika.grid(row=4,column=2,columnspan=4,rowspan=4,sticky=N+S+E+W)
+        text_izhodmatrika.grid(row=0,column=6,columnspan=4,rowspan=7,sticky=N+S+E+W)
 
         text_naddet = Label(master,text = "Determinanta:",height=2)
         text_naddet.grid(row=3,column=1,sticky=N+S+E+W)
@@ -177,8 +177,11 @@ class Tkmatrika:
         text_sled = Label(master,textvariable= self.sledispis,height=2)
         text_sled.grid(row=6,column=1,sticky=N+S+E+W)
 
-        text_sled = Label(master,textvariable= self.errorfild,height=2)
-        text_sled.grid(row=0,column=1,rowspan=2,sticky=N+S+E+W)
+        text_error = Label(master,textvariable= self.errorfild,height=2)
+        text_error.grid(row=0,column=2,columnspan=8,sticky=N+S+E+W)
+
+        gumb_pomoc = Button(master, text="Pomoc", command= self.help,height=2)
+        gumb_pomoc.grid(row=0,column=1,sticky=N+S+E+W)
 
     def odpri(self):
         fileName = askopenfilename(filetypes = ( ("text files", "*.txt") , ("all files", "*.*") ))
@@ -290,7 +293,7 @@ class Tkmatrika:
         else:
             if self.DEFCON2 != 2:
                 trans = self.aktivna.transponirana()
-                res = "Naslednja matrika transponirano: \n"
+                res = "Vasa matrika transponirano: \n"
                 for line in trans.cifre:
                     tren = ""
                     for j in line:
@@ -326,6 +329,18 @@ class Tkmatrika:
             else:
                 self.DEFCON4 = 0
                 self.sledispis.set("")
+
+    def help(self):
+        window = Toplevel()
+        window.title("Pomoc")
+        window.minsize(width=180, height=140)
+        text = Message(window,text=
+        """Izberite tekstovno datoteko, v kateri je v vsaki vrstici vektor oblike = [A1,A2,A3....An], teh vektorjev pa naj bo n \n
+        """)
+        text.grid(column=0,row=0)
+        gumb_zapri = Button(window, text = "OK", command= window.destroy)
+        gumb_zapri.grid(column=0,row=1)
+
 
 root = Tk()
 root.wm_title("Matrika")
