@@ -216,6 +216,7 @@ class Tkmatrika:
             self.DEFCON2 = 0
             self.DEFCON3 = 0
             self.DEFCON4 = 0
+            self.errorfild.set("")
 
 
     def izpisi(self): #to naj bi naredilo iz matrike str in ga postavilo v tkinter (treba je se dodati obliko

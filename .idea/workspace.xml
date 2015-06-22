@@ -17,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/UVPGITproject$MainUVP.coverage" NAME="MainUVP Coverage Results" MODIFIED="1434986053199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UVPGITproject$MainUVP.coverage" NAME="MainUVP Coverage Results" MODIFIED="1435002486530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="MainUVP.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainUVP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60123456">
-              <caret line="335" column="43" selection-start-line="335" selection-start-column="43" selection-end-line="335" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.6641975">
+              <caret line="218" column="34" selection-start-line="218" selection-start-column="34" selection-end-line="218" selection-end-column="34" />
               <folding>
                 <element signature="e#22#52#0" expanded="true" />
                 <element signature="e#199#353#0" expanded="false" />
@@ -41,6 +41,16 @@
                 <element signature="e#991#1294#0" expanded="false" />
                 <element signature="e#2784#3277#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Matrika5.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Matrika5.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -70,6 +80,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Matrika5.txt" />
         <option value="$PROJECT_DIR$/MainUVP.py" />
       </list>
     </option>
@@ -82,8 +93,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1078" />
-    <option name="y" value="60" />
+    <option name="x" value="995" />
+    <option name="y" value="49" />
     <option name="width" value="1456" />
     <option name="height" value="1273" />
   </component>
@@ -457,11 +468,17 @@
       <option name="project" value="LOCAL" />
       <updated>1434984308894</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="narjena je se pomoc pa mal je popravljen layout&#10;">
+      <created>1434986314575</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1434986314575</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1078" y="60" width="1456" height="1273" extended-state="0" />
+    <frame x="995" y="49" width="1456" height="1273" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -512,7 +529,8 @@
     <MESSAGE value="Narjena stanja&#10;manjka samo se oblika" />
     <MESSAGE value="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;" />
     <MESSAGE value="Dodano se stanje k se zresetira ko odpres novo matriko&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodano se stanje k se zresetira ko odpres novo matriko&#10;" />
+    <MESSAGE value="narjena je se pomoc pa mal je popravljen layout&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="narjena je se pomoc pa mal je popravljen layout&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -539,10 +557,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Matrika5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainUVP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60123456">
-          <caret line="335" column="43" selection-start-line="335" selection-start-column="43" selection-end-line="335" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.6641975">
+          <caret line="218" column="34" selection-start-line="218" selection-start-column="34" selection-end-line="218" selection-end-column="34" />
           <folding>
             <element signature="e#22#52#0" expanded="true" />
             <element signature="e#199#353#0" expanded="false" />
