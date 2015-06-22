@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a4bff1a-7da3-44d9-8361-3e59e0d354ee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainUVP.py" afterPath="$PROJECT_DIR$/MainUVP.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UVPGITproject.iws" />
@@ -17,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/UVPGITproject$MainUVP.coverage" NAME="MainUVP Coverage Results" MODIFIED="1435002486530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UVPGITproject$MainUVP.coverage" NAME="MainUVP Coverage Results" MODIFIED="1435003274857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -474,7 +473,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434986314575</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="popravljeno z nekvadratno matriko&#10;">
+      <created>1435003272378</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1435003272378</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -530,7 +535,8 @@
     <MESSAGE value="popravljeno da moras najprj zbrat datoteko da karkoli dela, in da ne dela ce ni izbrana matrika kvadratna&#10;" />
     <MESSAGE value="Dodano se stanje k se zresetira ko odpres novo matriko&#10;" />
     <MESSAGE value="narjena je se pomoc pa mal je popravljen layout&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="narjena je se pomoc pa mal je popravljen layout&#10;" />
+    <MESSAGE value="popravljeno z nekvadratno matriko&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="popravljeno z nekvadratno matriko&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
